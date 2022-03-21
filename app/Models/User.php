@@ -44,6 +44,7 @@ class User extends Authenticatable
 
     public function userInfo()
     {
+        // asd
         $this->hasOne(UserInfoModel::class,'user_id','id');
     }
 }
