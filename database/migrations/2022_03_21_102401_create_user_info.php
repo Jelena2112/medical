@@ -14,15 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('user_info', function (Blueprint $table) {
-            $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string("phone");
-            $table->string("gender");
-            $table->string("date_of _birth");
-            $table->integer("weight");
+            $table->string("phone")->nullable();
+            $table->string("gender")->nullable();
+            $table->date("date_of_birth")->nullable();
+            $table->float("weight")->nullable();
+            $table->float("height")->nullable();
             $table->timestamps();
 
-            $table->foreign("user_id")->references("id")->on("users");
+            $table->primary("user_id")->references("id")->on("users");
         });
     }
 
