@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\UserInfoController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +22,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::middleware('auth')->group(function() {
+
+    Route::get('/profil',[UserInfoController::class, 'index'])
+        ->name('userInfo.get');
+
+    Route::post('/saveUserInfo',[UserInfoController::class, 'saveUserInfo'])
+        ->name('userInfo.post');
+
+});
