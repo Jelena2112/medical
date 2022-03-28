@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'type'
     ];
 
     /**
@@ -45,5 +46,10 @@ class User extends Authenticatable
     public function userInfo()
     {
         return $this->hasOne(UserInfoModel::class,'user_id','id');
+    }
+
+    public function userType ()
+    {
+        return $this->hasOne(UserTypeModel::class, 'user_type', 'id');
     }
 }
