@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserInfoController;
+use App\Http\Middleware\CheckAdminMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,13 +27,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware('auth')->group(function() {
 
+    Route::middleware(CheckAdminMiddleware::class)->group(function () {
+        Route::get('/korisnici', [UserInfoController::class, 'showAllUsers'])
+            ->name('showAllUsers');
+    });
+
     Route::get('/profil',[UserInfoController::class, 'index'])
         ->name('userInfo.get');
 
     Route::post('/saveUserInfo',[UserInfoController::class, 'saveUserInfo'])
         ->name('userInfo.post');
 
-    Route::get('/korisnici', [UserInfoController::class, 'showAllUsers'])
-        ->name('showAllUsers');
 
 });
