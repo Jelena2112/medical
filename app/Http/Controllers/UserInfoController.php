@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\UserInfoModel;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Http\Request;
@@ -35,5 +36,12 @@ class UserInfoController extends Controller
 
        return redirect('/');
 
+   }
+
+   public function showAllUsers()
+   {
+        $users = User::all();
+
+        return view( 'admin.allUsers', ['users' => $users]);
    }
 }

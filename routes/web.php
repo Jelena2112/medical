@@ -32,4 +32,7 @@ Route::middleware('auth')->group(function() {
     Route::post('/saveUserInfo',[UserInfoController::class, 'saveUserInfo'])
         ->name('userInfo.post');
 
+    Route::get('/korisnici', [UserInfoController::class, 'showAllUsers'])
+        ->name('showAllUsers');
+
 });
