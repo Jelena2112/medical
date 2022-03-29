@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserInfoController;
 use App\Http\Middleware\CheckAdminMiddleware;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +31,9 @@ Route::middleware('auth')->group(function() {
     Route::middleware(CheckAdminMiddleware::class)->group(function () {
         Route::get('/korisnici', [UserInfoController::class, 'showAllUsers'])
             ->name('showAllUsers');
+
+        Route::post('/admin/updateUserType', [UserController::class, 'changeUserType'])
+            ->name('changeUserType');
     });
 
     Route::get('/profil',[UserInfoController::class, 'index'])
