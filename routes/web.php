@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DentalRecordsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserInfoController;
 use App\Http\Middleware\CheckAdminMiddleware;
@@ -32,6 +33,9 @@ Route::middleware('auth')->group(function() {
     Route::middleware(CheckDoctorMiddleware::class)->group(function () {
         Route::get('/korisnici', [UserInfoController::class, 'showAllUsers'])
             ->name('showAllUsers');
+
+        Route::get('/stomatoloski_karton/{user}', [DentalRecordsController::class, 'getUserDentalRecords'])
+            ->name('userDentalRecord');
     });
 
     Route::middleware(CheckAdminMiddleware::class)->group(function () {

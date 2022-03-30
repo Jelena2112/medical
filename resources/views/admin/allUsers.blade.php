@@ -8,7 +8,7 @@
         <p>{{$user->email}}</p>
         <p>{{$user->userType->user_type}}</p>
 
-        <a href="">Dental records</a>
+        <a href="{{ route('userDentalRecord',['user' => $user->id]) }}">Dentalni karton</a>
 
 
         <form action="{{ route('changeUserType') }}" method="post">
