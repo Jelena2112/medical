@@ -52,4 +52,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserTypeModel::class, 'id', 'type');
     }
+
+    public function userDentalRecord()
+    {
+        return $this->hasOne(DentalRecordsModel::class, 'user_id', 'id');
+    }
+
 }
