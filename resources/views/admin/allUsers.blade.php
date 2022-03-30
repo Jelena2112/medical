@@ -3,10 +3,12 @@
 @section('content')
 
     @foreach($users as $user)
-{{--    {{$user}}--}}
+
         <p>{{$user->name}}</p>
         <p>{{$user->email}}</p>
         <p>{{$user->userType->user_type}}</p>
+
+        <a href="">Dental records</a>
 
 
         <form action="{{ route('changeUserType') }}" method="post">

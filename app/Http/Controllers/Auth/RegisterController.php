@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\DentalRecordsModel;
 use App\Models\UserInfoModel;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -73,6 +74,8 @@ class RegisterController extends Controller
         ]);
 
         UserInfoModel::create(['user_id' => $user->id]);
+
+        DentalRecordsModel::create(['user_id' => $user->id]);
 
         return $user;
     }

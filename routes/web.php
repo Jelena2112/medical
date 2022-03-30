@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserInfoController;
 use App\Http\Middleware\CheckAdminMiddleware;
+use App\Http\Middleware\CheckDoctorMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,10 +29,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware('auth')->group(function() {
 
-    Route::middleware(CheckAdminMiddleware::class)->group(function () {
+    Route::middleware(CheckDoctorMiddleware::class)->group(function () {
         Route::get('/korisnici', [UserInfoController::class, 'showAllUsers'])
             ->name('showAllUsers');
+    });
 
+    Route::middleware(CheckAdminMiddleware::class)->group(function () {
         Route::post('/admin/updateUserType', [UserController::class, 'changeUserType'])
             ->name('changeUserType');
     });
