@@ -10,6 +10,7 @@
 
         <a href="{{ route('userDentalRecord',['user' => $user->id]) }}">Dentalni karton</a>
 
+        <a href="{{ route('userMedicalRecord', ['user' => $user->id]) }}">Medicinski karton</a>
 
         <form action="{{ route('changeUserType') }}" method="post">
             {{ csrf_field() }}

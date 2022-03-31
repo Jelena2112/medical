@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DentalRecordsController;
+use App\Http\Controllers\MedicalRecordController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserInfoController;
 use App\Http\Middleware\CheckAdminMiddleware;
@@ -39,6 +40,9 @@ Route::middleware('auth')->group(function() {
 
         Route::post('/dentalRecordUpdate', [DentalRecordsController::class, 'updateUserDentalRecord'])
             ->name('updateDentalRecord');
+
+        Route::get('/medicinski_karton/{user}', [MedicalRecordController::class, 'medicalRecord'])
+            ->name('userMedicalRecord');
     });
 
     Route::middleware(CheckAdminMiddleware::class)->group(function () {
