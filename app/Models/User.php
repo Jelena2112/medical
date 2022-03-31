@@ -58,4 +58,14 @@ class User extends Authenticatable
         return $this->hasOne(DentalRecordsModel::class, 'user_id', 'id');
     }
 
+    public function userMedicalRecord()
+    {
+        return $this->hasOne(MedicalRecordModel::class, 'user_id','id');
+    }
+
+    public function doctorMedicalRecord()
+    {
+        return $this->hasMany(MedicalRecordModel::class, 'doctor_id','id');
+    }
+
 }
