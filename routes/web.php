@@ -36,6 +36,9 @@ Route::middleware('auth')->group(function() {
 
         Route::get('/stomatoloski_karton/{user}', [DentalRecordsController::class, 'getUserDentalRecords'])
             ->name('userDentalRecord');
+
+        Route::post('/dentalRecordUpdate', [DentalRecordsController::class, 'updateUserDentalRecord'])
+            ->name('updateDentalRecord');
     });
 
     Route::middleware(CheckAdminMiddleware::class)->group(function () {

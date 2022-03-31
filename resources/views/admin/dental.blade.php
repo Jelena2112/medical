@@ -1,7 +1,18 @@
 @extends('layout')
 
 @section('content')
- <p>zubi: {{$user->userDentalRecord->current_teeth}}</p>
- <p>zubi koji fale: {{$user->userDentalRecord->missing_teeth}}</p>
- <p>Beleske: {{$user->userDentalRecord->notes}}</p>
+    <p>Ime korisnika: {{ $user->name }}</p>
+
+    <form action="{{ route('updateDentalRecord') }}" method="post">
+        {{ csrf_field() }}
+
+        <input type="hidden" value="{{ $user->id }}" name="user_id">
+       <input type="text" value="{{ $user->userDentalRecord->current_teeth }}" name="current_teeth" >
+       <input type="text" value="{{ $user->userDentalRecord->missing_teeth }}" name="missing_teeth">
+       <input type="text" value="{{ $user->userDentalRecord->notes }}" name="notes">
+        <input type="submit" value="Submit">
+    </form>
+
+
+
 @endsection
