@@ -19,7 +19,6 @@ class DentalRecordsController extends Controller
     public function updateUserDentalRecord(Request $request)
     {
         $request->validate([
-            'user_id' => ['numeric', 'required'],
             'current_teeth' => ['string'],
             'missing_teeth' => ['string'],
             'notes' => ['string']

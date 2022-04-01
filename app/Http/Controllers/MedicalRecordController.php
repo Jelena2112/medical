@@ -23,6 +23,22 @@ class MedicalRecordController extends Controller
 
        return view('admin/medical', ['user' => $user]);
 
+   }
 
+   public function updateUserMedicalRecord(Request $request)
+   {
+       $request->validate([
+           'notes ' => ['string']
+       ]);
+//        dd($request);
+       $update = $request->all();
+       unset($update['_token']);
+
+//       dd($update);
+
+       MedicalRecordModel::where(['user_id' => $update['user_id']])
+           ->update($update);
+
+       return redirect()->back();
    }
 }

@@ -43,6 +43,9 @@ Route::middleware('auth')->group(function() {
 
         Route::get('/medicinski_karton/{user}', [MedicalRecordController::class, 'medicalRecord'])
             ->name('userMedicalRecord');
+
+        Route::post('/medicalRecordUpdate' ,[MedicalRecordController::class, 'updateUserMedicalRecord'])
+            ->name('updateMedicalRecord');
     });
 
     Route::middleware(CheckAdminMiddleware::class)->group(function () {
