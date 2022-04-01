@@ -18,7 +18,11 @@ class MedicalRecordController extends Controller
                'doctor_id' => Auth::user()->id
            ]);
        }
+//       dd(Auth::user()->toArray());
+//       dd($user->userMedicalRecord->doctor->name);
 
        return view('admin/medical', ['user' => $user]);
+
+
    }
 }

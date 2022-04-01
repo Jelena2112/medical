@@ -13,5 +13,10 @@ class MedicalRecordModel extends Model
 
     protected $fillable = ['user_id', 'notes','doctor_id'];
 
+    public function doctor()
+    {
+        return $this->hasOne(User::class, 'id','doctor_id');
+    }
+
 
 }
