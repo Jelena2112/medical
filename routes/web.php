@@ -20,9 +20,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
@@ -30,6 +27,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::middleware('auth')->group(function() {
+
+    Route::view('/', 'homepage');
+
+    Route::get('/karton', [UserController::class, 'getUserInfo'])
+        ->name('userAllInfo.get');
 
     Route::middleware(CheckDoctorMiddleware::class)->group(function () {
         Route::get('/korisnici', [UserInfoController::class, 'showAllUsers'])
