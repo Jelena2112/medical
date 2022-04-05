@@ -50,7 +50,7 @@ Route::middleware('auth')->group(function() {
             ->name('updateMedicalRecord');
     });
 
-    Route::middleware(CheckAdminMiddleware::class)->group(function () {
+   Route::middleware(CheckAdminMiddleware::class)->group(function () {
         Route::post('/admin/updateUserType', [UserController::class, 'changeUserType'])
             ->name('changeUserType');
     });
@@ -60,6 +60,5 @@ Route::middleware('auth')->group(function() {
 
     Route::post('/saveUserInfo',[UserInfoController::class, 'saveUserInfo'])
         ->name('userInfo.post');
-
 
 });
