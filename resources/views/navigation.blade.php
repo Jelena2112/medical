@@ -11,6 +11,8 @@
             @csrf
         </form>
 
+        <a href="{{ route('userInfo.get') }}">Moj profil</a>
+
         <a href="{{route('userAllInfo.get')}}">Moj karton</a>
        @if(\Illuminate\Support\Facades\Auth::user()->userType->user_type != "user")
             <a href="{{ route('showAllUsers') }}">Korisnici</a>

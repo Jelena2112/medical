@@ -12,12 +12,13 @@ class UserInfoController extends Controller
 {
    public function index()
    {
-       return view('profile', ['userInfo' => Auth::user()->userInfo]);
+       return view('profile', ['user' => Auth::user()]);
    }
 
    public function saveUserInfo(Request $request)
    {
        $request->validate([
+           'name' => ['string'],
            'phone' => ['string'],
            'gender' => ['string', 'in:male,female'],
            'date_of_birth' => ['date'],
@@ -27,6 +28,9 @@ class UserInfoController extends Controller
 
        $data = $request->all();
        unset($data['_token']);
+       unset($data['name']);
+
+       User::where(['id' => Auth::id()])->update(['name' => $request->name]);
 
        UserInfoModel::where(['user_id' => Auth::id()])->update($data);
 //
