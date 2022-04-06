@@ -37,6 +37,8 @@ Route::middleware('auth')->group(function() {
         Route::get('/korisnici', [UserInfoController::class, 'showAllUsers'])
             ->name('showAllUsers');
 
+//        Route::post('/changeUserType', )
+
         Route::get('/stomatoloski_karton/{user}', [DentalRecordsController::class, 'getUserDentalRecords'])
             ->name('userDentalRecord');
 

@@ -12,6 +12,8 @@
 
         <a href="{{ route('userMedicalRecord', ['user' => $user->id]) }}">Medicinski karton</a>
 
+        @if(\Illuminate\Support\Facades\Auth::user()->userType->user_type == "admin")
+
         <form action="{{ route('changeUserType') }}" method="post">
             {{ csrf_field() }}
             <input type="hidden" value="{{ $user->id }}" name="user_id">
@@ -29,6 +31,8 @@
             <br><br>
             <input type="submit" value="Submit">
         </form>
+
+        @endif
 
     @endforeach
 
