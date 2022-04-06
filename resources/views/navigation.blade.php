@@ -12,8 +12,8 @@
         </form>
 
         <a href="{{route('userAllInfo.get')}}">Moj karton</a>
-       @if(\Illuminate\Support\Facades\Auth::user()->type != "user")
-           {{dd(\Illuminate\Support\Facades\Auth::user()->userType->user_type)}}
+       @if(\Illuminate\Support\Facades\Auth::user()->userType->user_type != "user")
+            <a href="{{ route('showAllUsers') }}">Korisnici</a>
         @endif
 
     @elseauth
