@@ -2,16 +2,30 @@
 
 @section('content')
 
+    <h3>Medicinski karton</h3>
+
     <p>Ime korisnika:{{ $user->name }}</p>
 
-    <form method="post" action="{{ route('updateMedicalRecord') }}">
+    @if(\Illuminate\Support\Facades\Auth::user()->userType->user_type == 'zubar')
 
-        {{ csrf_field() }}
-        <input type="hidden" value="{{ $user->id }}" name="user_id">
-       <input type="text" name="notes" value="{{ $user->userMedicalRecord->notes }}">
-        <input type="submit" value="Submit">
+        <form method="post" action="{{ route('updateMedicalRecord') }}">
 
-    </form>
+            {{ csrf_field() }}
+            <input type="hidden" value="{{ $user->id }}" name="user_id">
+
+            <label>Beleske:</label>
+            <input type="text" name="notes" value="{{ $user->userMedicalRecord->notes }}"><br>
+            <input type="submit" value="Submit">
+
+        </form>
+
+    @else
+
+        <p>Beleske:</p>
+        <p>{{ $user->userMedicalRecord->notes }}</p>
+
+    @endif
+
     <p>Doktor:{{ $user->userMedicalRecord->doctor->name }}</p>
 
 @endsection

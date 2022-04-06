@@ -1,6 +1,8 @@
 @extends('layout')
 
 @section('content')
+
+    <h3>Dentalni karton</h3>
     <p>Ime korisnika: {{ $user->name }}</p>
 
     @if(\Illuminate\Support\Facades\Auth::user()->userType->user_type == 'zubar')
@@ -29,10 +31,5 @@
         <p>Beleske: {{ $user->userDentalRecord->notes }}</p>
 
     @endif
-
-
-
-
-
 
 @endsection
